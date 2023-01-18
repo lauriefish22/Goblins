@@ -1,6 +1,7 @@
 /* Imports */
 
 /* Get DOM Elements */
+const kidsEl = document.getElementById('kids');
 const kids = [
     {
         name: 'Bobby',
@@ -17,6 +18,11 @@ const kids = [
 ];
 
 /* State */
+for (let kid of kids) {
+    const kidEl = document.createElement('p');
+    kidEl.textContent = 'new x';
+    kidsEl.append(kidEl);
+}
 
 /* Events */
 

@@ -23,14 +23,21 @@
     </head>
 
     <body>
-        <h1>Fun with Cow Pies!</h1>
-
-        <div class="farmer-container"></div>
-        <h2>Your HP: <span id="player-HP">0</span></h2>
-        <div>
-            <img src="./assets/Farmer2.png" id="farmer" class="farmer" />
-        </div>
-
-        <main></main>
+        <header>
+            <h1>Fun with Cow Pies!</h1>
+        </header>
+        <main>
+            <div class="farmer-container">
+                <h2>Your HP: <span id="player-HP">0</span></h2>
+                <div>
+                    <img src="./assets/Farmer2.png" id="farmer" class="farmer" />
+                </div>
+            </div>
+            <div class="kids-container">
+                <input type="text" id="text-box" />
+                <button type="submit" id="button">Add Kid</button>
+            </div>
+            <div class="kids" id="kids"></div>
+        </main>
     </body>
 </html>

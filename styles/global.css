@@ -8,7 +8,7 @@
 body {
     font-family: var(--primary-font);
     background: url(../assets/farm3.png);
-
+    background-repeat: no-repeat;
     background-size: cover;
 
     display: grid;
@@ -35,15 +35,15 @@ header .logo {
 
 main {
     padding: 20px;
+    display: flex;
 }
 
 .farmer-container {
-    width: 500px;
+    width: 100%;
     text-align: center;
 }
 
 .farmer {
-    width: 600px;
     margin-top: 200px;
 }
 
@@ -60,4 +60,19 @@ h2 {
 h1 {
     margin-left: 50px;
     font-size: 48px;
+}
+#text-box {
+    width: 200px;
+    background-color: blue;
+    margin-top: 50px;
+}
+.kids-container {
+    width: 40%;
+    background-color: chartreuse;
+    text-align: center;
+    margin-top: 20px;
+    height: 100px;
+}
+main {
+    width: 100%;
 }
