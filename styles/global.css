@@ -7,7 +7,10 @@
 
 body {
     font-family: var(--primary-font);
-    background: var(--background);
+    background: url(../assets/farm3.png);
+
+    background-size: cover;
+
     display: grid;
     grid-template-rows: auto 1fr;
 }
@@ -32,4 +35,29 @@ header .logo {
 
 main {
     padding: 20px;
+}
+
+.farmer-container {
+    width: 500px;
+    text-align: center;
+}
+
+.farmer {
+    width: 600px;
+    margin-top: 200px;
+}
+
+h2 {
+    color: crimson;
+    background-color: black;
+    border-radius: 5%;
+    width: 300px;
+    height: 55px;
+    text-align: center;
+    margin-left: 50px;
+    font-size: 42px;
+}
+h1 {
+    margin-left: 50px;
+    font-size: 48px;
 }

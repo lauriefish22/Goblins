@@ -1,6 +1,20 @@
 /* Imports */
 
 /* Get DOM Elements */
+const kids = [
+    {
+        name: 'Bobby',
+        HP: 3,
+    },
+    {
+        name: 'Marsha',
+        HP: 4,
+    },
+    {
+        name: 'Jan',
+        HP: 2,
+    },
+];
 
 /* State */
 
