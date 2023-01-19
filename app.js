@@ -2,6 +2,8 @@
 
 /* Get DOM Elements */
 const kidsEl = document.getElementById('kids');
+const buttonEl = document.getElementById('button');
+const inputEl = document.getElementById('text-box');
 const kids = [
     {
         name: 'Bobby',
@@ -18,6 +20,19 @@ const kids = [
 ];
 
 /* State */
+
+buttonEl.addEventListener('click', () => {
+    const kidName = inputEl.value;
+    if (!kidName) {
+        return; 
+    }
+    const newKid = {
+        name: kidName,
+        HP: Math.ceil(Math.random() * 6)
+    
+};
+kids.push(newKid);
+
 for (let kid of kids) {
     const newKidEl = renderKid(kid);
     kidsEl.append(newKidEl);
