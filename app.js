@@ -19,9 +19,23 @@ const kids = [
 
 /* State */
 for (let kid of kids) {
-    const kidEl = document.createElement('p');
-    kidEl.textContent = 'new x';
-    kidsEl.append(kidEl);
+    const newKidEl = renderKid(kid);
+    kidsEl.append(newKidEl);
+}
+function renderKid(dataKid) {
+    const newKidEl = document.createElement('li');
+    const nameEl = document.createElement('p');
+    const emojiEl = document.createElement('p');
+    const HPEl = document.createElement('p');
+
+    nameEl.textContent = dataKid.name;
+    emojiEl.textContent = '💩';
+    HPEl.textContent = dataKid.HP;
+
+    newKidEl.classList.add('kid');
+    newKidEl.append(nameEl, emojiEl, HPEl);
+
+    return newKidEl;
 }
 
 /* Events */
