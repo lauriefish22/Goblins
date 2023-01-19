@@ -103,3 +103,6 @@ p {
     padding-bottom: 8px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+.crooked {
+    transform: rotate(-90deg);
+}
