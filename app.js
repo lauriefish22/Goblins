@@ -7,6 +7,10 @@ const inputEl = document.getElementById('text-box');
 const defeatedCountEl = document.getElementById('defeated-count');
 const farmerImgEl = document.getElementById('farmer');
 const farmerHPEl = document.getElementById('farmer-HP');
+
+/* State */
+let defeatedCount = 0;
+let farmerHP = 10;
 const kids = [
     {
         name: 'Bobby',
@@ -22,10 +26,7 @@ const kids = [
     },
 ];
 
-/* State */
-let defeatedCount = 0;
-let farmerHP = 10;
-
+/* Events */
 buttonEl.addEventListener('click', () => {
     const kidName = inputEl.value;
     if (!kidName) {
@@ -57,8 +58,6 @@ function renderKid(dataKid) {
 
     return newKidEl;
 }
-
-/* Events */
 
 /* Display Functions */
 function displayKids() {
