@@ -1,17 +1,18 @@
 /* Imports */
 
 /* Get DOM Elements */
-const kidsEl = document.getElementById('kids');
+
 const buttonEl = document.getElementById('button');
 const inputEl = document.getElementById('text-box');
 const defeatedCountEl = document.getElementById('defeated-count');
 const farmerImgEl = document.getElementById('farmer');
 const farmerHPEl = document.getElementById('farmer-HP');
+const kidsEl = document.getElementById('kids');
 
 /* State */
 let defeatedCount = 0;
 let farmerHP = 10;
-const kids = [
+const kid = [
     {
         name: 'Bobby',
         HP: 3,
@@ -36,7 +37,7 @@ buttonEl.addEventListener('click', () => {
         name: kidName,
         HP: Math.ceil(Math.random() * 6),
     };
-    kids.push(newKid);
+    kid.push(newKid);
 
     inputEl.value = '';
 
@@ -67,7 +68,7 @@ function displayKids() {
         const newKidEl = renderKid(kid);
 
         newKidEl.addEventListener('click', () => {
-            if (farmerHP <= 0) {
+            if (farmerHP === 0) {
                 alert('Need more cow pies!');
                 return;
             }
@@ -76,7 +77,7 @@ function displayKids() {
                 kid.HP--;
                 if (kid.HP === 0) {
                     defeatedCount++;
-                    defeatedCountEl.textContent = `You have defeated ${defeatedCount} goblins`;
+                    defeatedCountEl.textContent = `You have defeated ${defeatedCount} kids`;
                 }
             } else {
                 alert('you missed' + kid.name);
@@ -84,13 +85,14 @@ function displayKids() {
             if (Math.random() > 0.8) {
                 alert(kid.name + 'fought back and hit you');
                 farmerHP--;
-                if (farmerHP <= 0) {
+                if (farmerHP === 0) {
                     farmerImgEl.classList.add('crooked');
                 }
             } else {
                 alert(kid.name + 'fought back and missed');
             }
             farmerHPEl.textContent = farmerHP;
+            displayKids();
         });
         kidsEl.append(newKidEl);
     }
