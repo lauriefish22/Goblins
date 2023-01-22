@@ -12,7 +12,7 @@ const kidsEl = document.getElementById('kids');
 /* State */
 let defeatedCount = 0;
 let farmerHP = 10;
-const kid = [
+const kids = [
     {
         name: 'Bobby',
         HP: 3,
@@ -27,6 +27,13 @@ const kid = [
     },
 ];
 
+for (let kid of kids) {
+    const kidEl = document.createElement('p');
+    kidEl.textContent = `${kid.name} has ${kid.HP} HP`;
+
+    kidsEl.append(kidEl);
+}
+
 /* Events */
 buttonEl.addEventListener('click', () => {
     const kidName = inputEl.value;
@@ -37,35 +44,16 @@ buttonEl.addEventListener('click', () => {
         name: kidName,
         HP: Math.ceil(Math.random() * 6),
     };
-    kid.push(newKid);
+    kids.push(newKid);
 
     inputEl.value = '';
-
-    displayKids();
 });
 
-function renderKid(dataKid) {
-    const newKidEl = document.createElement('li');
-    const nameEl = document.createElement('p');
-    const emojiEl = document.createElement('p');
-    const HPEl = document.createElement('p');
-
-    nameEl.textContent = dataKid.name;
-    emojiEl.textContent = '💩';
-    HPEl.textContent = dataKid.HP;
-
-    newKidEl.classList.add('kid');
-    newKidEl.append(nameEl, emojiEl, HPEl);
-
-    return newKidEl;
-}
-
-/* Display Functions */
 function displayKids() {
     kidsEl.textContext = '';
 
     for (let kid of kids) {
-        const newKidEl = renderKid(kid);
+        const newKidEl = renderKid(dataKid);
 
         newKidEl.addEventListener('click', () => {
             if (farmerHP === 0) {
@@ -97,5 +85,24 @@ function displayKids() {
         kidsEl.append(newKidEl);
     }
 }
+displayKids();
+
+function renderKid(dataKid) {
+    const newKidEl = document.createElement('li');
+    const nameEl = document.createElement('p');
+    const emojiEl = document.createElement('p');
+    const HPEl = document.createElement('p');
+
+    nameEl.textContent = dataKid.name;
+    emojiEl.textContent = '💩';
+    HPEl.textContent = dataKid.HP;
+
+    newKidEl.classList.add('kid');
+    newKidEl.append(nameEl, emojiEl, HPEl);
+
+    return newKidEl;
+}
+
+/* Display Functions */
 
 // (don't forget to call any display functions you want to run on page load!)
