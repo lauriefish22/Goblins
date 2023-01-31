@@ -78,14 +78,14 @@ h1 {
 main {
     width: 100%;
 }
-.kid {
+.kids {
     background-color: darkorchid;
     height: 70px;
     width: 250px;
     border-radius: 5%;
     text-align: center;
     display: flex;
-    margin-top: 20px;
+    margin-top: 100px;
 
     margin-right: 30px;
     padding-left: 15px;

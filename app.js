@@ -1,31 +1,31 @@
 /* Imports */
 
 /* Get DOM Elements */
-const kidsEl = document.getElementById('kids');
+
 const buttonEl = document.getElementById('button');
 const inputEl = document.getElementById('text-box');
 const defeatedCountEl = document.getElementById('defeated-count');
 const farmerImgEl = document.getElementById('farmer');
 const farmerHPEl = document.getElementById('farmer-HP');
-const kids = [
-    {
-        name: 'Bobby',
-        HP: 3,
-    },
-    {
-        name: 'Marsha',
-        HP: 4,
-    },
-    {
-        name: 'Jan',
-        HP: 2,
-    },
-];
+const kidsEl = document.getElementById('kids');
 
 /* State */
 let defeatedCount = 0;
 let farmerHP = 10;
+const kids = [
+    { id: 1, name: 'Bobby', HP: 3 },
+    { id: 2, name: 'Marsha', HP: 4 },
+    { id: 3, name: 'Jan', HP: 2 },
+];
 
+for (let kid of kids) {
+    const kidEl = document.createElement('p');
+    kidEl.textContent = `${kid.name} has ${kid.HP} HP`;
+
+    kidsEl.append(kidEl);
+}
+
+/* Events */
 buttonEl.addEventListener('click', () => {
     const kidName = inputEl.value;
     if (!kidName) {
@@ -38,9 +38,45 @@ buttonEl.addEventListener('click', () => {
     kids.push(newKid);
 
     inputEl.value = '';
-
-    displayKids();
 });
+
+function displayKids() {
+    kidsEl.textContext = '';
+
+    for (let kid of kids) {
+        const newKidEl = renderKid(kid);
+
+        newKidEl.addEventListener('click', () => {
+            if (farmerHP === 0) {
+                alert('Need more cow pies!');
+                return;
+            }
+            if (Math.random() > 0.3) {
+                alert('you hit' + kid.name);
+                kid.HP--;
+                if (kid.HP === 0) {
+                    defeatedCount++;
+                    defeatedCountEl.textContent = `You have defeated ${defeatedCount} kids`;
+                }
+            } else {
+                alert('you missed' + kid.name);
+            }
+            if (Math.random() > 0.8) {
+                alert(kid.name + 'fought back and hit you');
+                farmerHP--;
+                if (farmerHP === 0) {
+                    farmerImgEl.classList.add('crooked');
+                }
+            } else {
+                alert(kid.name + 'fought back and missed');
+            }
+            farmerHPEl.textContent = farmerHP;
+            displayKids();
+        });
+        kidsEl.append(newKidEl);
+    }
+}
+displayKids();
 
 function renderKid(dataKid) {
     const newKidEl = document.createElement('li');
@@ -58,43 +94,6 @@ function renderKid(dataKid) {
     return newKidEl;
 }
 
-/* Events */
-
 /* Display Functions */
-function displayKids() {
-    kidsEl.textContext = '';
-
-    for (let kid of kids) {
-        const newKidEl = renderKid(kid);
-
-        newKidEl.addEventListener('click', () => {
-            if (farmerHP <= 0) {
-                alert('Need more cow pies!');
-                return;
-            }
-            if (Math.random() > 0.3) {
-                alert('you hit' + kid.name);
-                kid.HP--;
-                if (kid.HP === 0) {
-                    defeatedCount++;
-                    defeatedCountEl.textContent = `You have defeated ${defeatedCount} goblins`;
-                }
-            } else {
-                alert('you missed' + kid.name);
-            }
-            if (Math.random() > 0.8) {
-                alert(kid.name + 'fought back and hit you');
-                farmerHP--;
-                if (farmerHP <= 0) {
-                    farmerImgEl.classList.add('crooked');
-                }
-            } else {
-                alert(kid.name + 'fought back and missed');
-            }
-            farmerHPEl.textContent = farmerHP;
-        });
-        kidsEl.append(newKidEl);
-    }
-}
 
 // (don't forget to call any display functions you want to run on page load!)
