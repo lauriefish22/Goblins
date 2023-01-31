@@ -13,18 +13,9 @@ const kidsEl = document.getElementById('kids');
 let defeatedCount = 0;
 let farmerHP = 10;
 const kids = [
-    {
-        name: 'Bobby',
-        HP: 3,
-    },
-    {
-        name: 'Marsha',
-        HP: 4,
-    },
-    {
-        name: 'Jan',
-        HP: 2,
-    },
+    { id: 1, name: 'Bobby', HP: 3 },
+    { id: 2, name: 'Marsha', HP: 4 },
+    { id: 3, name: 'Jan', HP: 2 },
 ];
 
 for (let kid of kids) {
@@ -53,7 +44,7 @@ function displayKids() {
     kidsEl.textContext = '';
 
     for (let kid of kids) {
-        const newKidEl = renderKid(dataKid);
+        const newKidEl = renderKid(kid);
 
         newKidEl.addEventListener('click', () => {
             if (farmerHP === 0) {
